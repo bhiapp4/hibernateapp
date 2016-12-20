@@ -1,0 +1,68 @@
+ORM - Object relational mapping tool
+JPA - Java Persistence API
+Hibernate ORM
+
+Advantages
+-generates Optimized sql
+-switching databases with few property changes
+-Paginated queries
+-Caching
+-Easy to maintain
+
+---Maven(Build tools - Maven, Gradle and Ant) - java ,web project
+-mvn clean
+-mvn compile
+-mvn install -> Jar,war - installs it in ur local maven repo
+-mvn package -> but it does not publishes to ur local maven repo
+-mvn test -> execute test cases(Junit/Testng)
+-mvn verify -> verifies and checks if there are any problems
+
+-mvn clean compile install
+-it does dependency management(libraries)
+-Maven central repository
+-dependency scopes -> compile, test,provided, runtime
+-custom plugins (<plugin-management>)
+-configure our own repo's(<repository>)
+-parent -child1,child2,child3
+-clean project structure
+
+-Jar - java archive - courseapp.jar
+-War - web archive - jars/web-related info(html,jsps,css,js etc..)
+-Ear - enterprise archive - ejb's(Enterprise Java beans(Session beans/Message driven beans))(jar)war
+-Servers - Tomcat,jboss,weblogic, websphere
+-Connection pooling -> pool of database connections(5 connections)
+-DriverManager.getConnection(url,username,password) -Open a connection to ur database
+
+-Core interfaces of hibernate(SessionFactory,Session,Transaction,Criteria,Query, Configuration)
+
+-generation strategies
+-Identity
+-foreign
+-Auto
+-Increment
+-Sequence
+-Hilo
+-SeqHilo
+-Assigned- developer has to provide the id
+-uuid generation strategy
+
+
+-Mapping classes to tables
+-Hibernate ID generation strategies
+-Lazy - deault fetching strategy - Course List<Topics>
+-Eager -
+
+-Mapping collections(List,Set,Map,Bag(allows duplicates but order is not preserved(Just use collection reference type set to arraylist)))
+-Creating Session factory, session, transaction
+-Performing crud operations
+-Hibernate fetching strategies
+-Hibernate entity life cycle
+-Hibernate querying - using criteria, hql, nativesql
+
+---Advanced topics----
+Mapping inheritance in hibernate
+Creating composite key
+Performing Caching(First level, Second level, Query level)
+Creating entity event listeners
+
+
