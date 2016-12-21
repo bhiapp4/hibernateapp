@@ -13,6 +13,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +24,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 import javax.persistence.Transient;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Course implements Serializable{
@@ -48,9 +52,10 @@ public class Course implements Serializable{
 			inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "userId"))
 	private List<User> registeredUsers = new ArrayList<>();
 
-	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "course", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	//@OrderColumn(name="idx")
 	@OrderColumn
+	@Fetch(FetchMode.SELECT)//JOIN(one query to get both course and topic),SELECT(two queries to get course and topic)
 	private List<Topic> topics = new ArrayList<>();
 
 	private LocalDateTime createdDateTime;

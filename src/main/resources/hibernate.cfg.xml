@@ -25,6 +25,14 @@
 		<mapping class="com.jnit.entities.Topic" />
 		<mapping class="com.jnit.entities.Employee" />		
 		<mapping class="com.jnit.entities.Address"/>
+		<mapping class="com.jnit.entities.composite.Author"/>
+		<mapping class="com.jnit.entities.singletable.CD"/>
+		<mapping class="com.jnit.entities.singletable.SpecialEditionCD"/>
+		<mapping class="com.jnit.entities.singletable.InternationalCD"/>
+		<mapping class="com.jnit.entities.joined.Person"/>
+		<mapping class="com.jnit.entities.joined.Student"/>
+		<mapping class="com.jnit.entities.joined.Teacher"/>
+		
 		
 	</session-factory>
 </hibernate-configuration>

@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +25,7 @@ public class Employee implements Serializable {
 	//@Column(name="createdDt", nullable=true, length=50)
 	private LocalDateTime createdDateTime;
 	//mapped by property tells hibernate where to locate ur foreign key
-	@OneToOne(mappedBy="employee", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToOne(mappedBy="employee", cascade=CascadeType.ALL)
 	private Address address;
 	
 	public Employee(){

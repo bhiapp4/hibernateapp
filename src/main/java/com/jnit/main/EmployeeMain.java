@@ -23,12 +23,12 @@ public class EmployeeMain {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction tran = session.beginTransaction();
-		Employee emp = new Employee("a", "b", "c");
-		Address add = new Address();
-		add.setCity("Coppell");
-		emp.setAddress(add);
-		add.setEmployee(emp);
-		session.save(emp);
+//		Employee emp = new Employee("a", "b", "c");
+//		Address add = new Address();
+//		add.setCity("Coppell");
+//		emp.setAddress(add);
+//		add.setEmployee(emp);
+//		session.save(emp);
 		//session.save(add);
 		//Employee e = session.get(Employee.class,1L);
 		

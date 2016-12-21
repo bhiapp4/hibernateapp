@@ -46,22 +46,31 @@ Advantages
 -Assigned- developer has to provide the id
 -uuid generation strategy
 
-
 -Mapping classes to tables
 -Hibernate ID generation strategies
+-Hibernate fetching strategy
 -Lazy - deault fetching strategy - Course List<Topics>
 -Eager -
-
--Mapping collections(List,Set,Map,Bag(allows duplicates but order is not preserved(Just use collection reference type set to arraylist)))
 -Creating Session factory, session, transaction
 -Performing crud operations
--Hibernate fetching strategies
+
+
+-Mapping collections(List,Set,Map,Bag(allows duplicates but order is not preserved(Just use collection reference type set to arraylist)))
+
+//Bag
+Collection<Topic>topics = new ArrayList<>();
+
+
+-Creating composite key
+-Hibernate Fetch modes and lazy fetching
+Mapping inheritance in hibernate -- SINGLE_TABLE, JOINED(Person(person properties),Contractor(contractor specific properties),Employee(any employee specific properties))
+, TABLE_PER_CLASS(redundency(Person (person properties), Contractor(person plus contactor properties), Employee(person plus employee properties)))
+-Hibernate querying - using session api, criteria, hql, nativesql
+
 -Hibernate entity life cycle
--Hibernate querying - using criteria, hql, nativesql
+-Locking in hibernate
 
 ---Advanced topics----
-Mapping inheritance in hibernate
-Creating composite key
 Performing Caching(First level, Second level, Query level)
 Creating entity event listeners
 
