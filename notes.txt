@@ -76,4 +76,18 @@ Validations in hibernate
 -Auditing with Envers(@Audited and @NotAudited, rev types(0 -inserted,1-updated,2-deleted))
 -Creating inteceptors
 
+--HW
+- Convert ur jdbc hw to hibernate
+- Create an exanple for inheritance(Single table and joined)
+- Create queries using session api(CRUD),HQL, Criteria API
+- Create a table in db with different column names than ur java member variable names
+- Create validation for one or two columns
+- Observe the lazy and eager fecthing
+- An example with different generation strategies
+- Course, topic, user -> relationships
+----Formatted, code guidelines, git repo
+
+
+
+
 
