@@ -13,21 +13,26 @@ import com.jnit.entities.composite.Author;
 public class HQLMain {
 
 	public static void main(String[] args) {
-//		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-//		Session session = sessionFactory.openSession();
-//		String query = "FROM Author WHERE City=?";
-//		Query hql = session.createQuery(query);
-//		hql.setParameter(0, "Coppell");
-//		List<Author>authors = hql.getResultList();
-//		System.out.println(authors.size());
-//		session.close();
-//		sessionFactory.close();
+		//findUsersByCity();
 		//selectFirstNames();
 		//selectFirstNameAndMiddleName();
 		//groupByCity();
 		//nativeSQL();
 		//namedQueries();
-		namedNativeQueries();
+		//namedNativeQueries();
+		hqlJoin();
+	}
+	
+	public static void findUsersByCity(){
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String query = "FROM Author WHERE City=?";
+		Query hql = session.createQuery(query);
+		hql.setParameter(0, "Coppell");
+		List<Author>authors = hql.getResultList();
+		System.out.println(authors.size());
+		session.close();
+		sessionFactory.close();
 	}
 	
 	public static void selectFirstNames(){
@@ -80,7 +85,8 @@ public class HQLMain {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = sessionFactory.openSession();
 		String query = "select * from author";
-		Query hql = session.createSQLQuery(query).addEntity(Author.class);
+		Query hql = session.createNativeQuery(query,Author.class);
+		//Query hql = session.createSQLQuery(query).addEntity(Author.class);
 		List<Author>authors = hql.getResultList();
 		System.out.println(authors.size());
 		session.close();
@@ -107,6 +113,24 @@ public class HQLMain {
 		System.out.println(authors.size());
 		session.close();
 		sessionFactory.close();
+	}
+	//find coursename,topicname,topicduration
+	public static void hqlJoin(){
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		String hql = "select c.name,t.name,t.duration from Course c "
+				+ "join Topic t on c.courseId = t.course.courseId where c.courseId=?";
+		Query query = session.createQuery(hql);
+		query.setParameter(0, 1L);
+		List<Object[]>data = query.getResultList();
+		for(Object[]ob : data){
+			System.out.println(ob[0]);
+			System.out.println(ob[1]);
+			System.out.println(ob[2]);
+		}
+		session.close();
+		sessionFactory.close();
+		
 	}
 
 

@@ -65,13 +65,15 @@ Collection<Topic>topics = new ArrayList<>();
 -Hibernate Fetch modes and lazy fetching
 Mapping inheritance in hibernate -- SINGLE_TABLE, JOINED(Person(person properties),Contractor(contractor specific properties),Employee(any employee specific properties))
 , TABLE_PER_CLASS(redundency(Person (person properties), Contractor(person plus contactor properties), Employee(person plus employee properties)))
--Hibernate querying - using session api, criteria, hql, nativesql
-
--Hibernate entity life cycle
--Locking in hibernate
+-Hibernate querying - using session api, criteria, hql, nativesql, named queries
 
 ---Advanced topics----
-Performing Caching(First level, Second level, Query level)
-Creating entity event listeners
+-HQL Join queries
+-Hibernate entity life cycle - Transient state, persistent state(save,update,saveOrUpdate), detached state(session.close()) - deleted state(session.delete,delete hql)
+Validations in hibernate
+-Locking in hibernate
+-Performing Caching(First level(Session), Second level(Session Factory), Query level(cache ur hql results- uses second level cache to store the resultset(key(city-jerseycity)-value(List of results))))
+-Auditing with Envers(@Audited and @NotAudited, rev types(0 -inserted,1-updated,2-deleted))
+-Creating inteceptors
 
 

@@ -24,13 +24,13 @@ import com.jnit.entities.composite.AuthorId;
 public class CriteriaHibernate5 {
 
 	public static void main(String[] args) {
-		//createAuthor();
-		//fidnAuthorsByMiddeName();
-		//findAuthorFirstNamesByCity();
-		//selectMultipleFieldsUsingCriteria();
-		//selectMultipleFieldsUsingCriteriaTuple();
-		//selectMultipleFieldsUsingCriteriaWrapper();
-		performGroupByWithCriteria();
+		createAuthor();
+//		fidnAuthorsByMiddeName();
+//		findAuthorFirstNamesByCity();
+//		selectMultipleFieldsUsingCriteria();
+//		selectMultipleFieldsUsingCriteriaTuple();
+//		selectMultipleFieldsUsingCriteriaWrapper();
+		//performGroupByWithCriteria();
 
 	}
 	
@@ -39,11 +39,11 @@ public class CriteriaHibernate5 {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		Author a = new Author();
-		AuthorId aid = new AuthorId("Harry","Dietel","How to Program Java");
+		AuthorId aid = new AuthorId("Paul","Dietel","How to Program Java");
 		a.setAuthorId(aid);
 		a.setIsbn("012345");
-		a.setMiddleName("Henry");
-		a.setCity("Coppell");
+		a.setMiddleName("Mike");
+		a.setCity("Lewisville");
 		session.save(a);
 		session.getTransaction().commit();
 		session.close();

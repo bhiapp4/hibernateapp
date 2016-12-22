@@ -1,5 +1,6 @@
 package com.jnit.entities.composite;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
@@ -9,6 +10,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.envers.Audited;
+import org.hibernate.envers.NotAudited;
+
 @Entity
 @Table(name="author")
 @NamedQueries(value={
@@ -17,9 +23,13 @@ import javax.persistence.Version;
 @NamedNativeQueries(value={
 		@NamedNativeQuery(name="selectAll", query="select * from author")
 })
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+@Audited
 public class Author {
 	@Id
 	private AuthorId authorId;
+	@NotAudited
 	private String middleName;
 	private String isbn;
 	private String city;

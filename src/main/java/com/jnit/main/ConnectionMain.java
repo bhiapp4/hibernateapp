@@ -20,7 +20,7 @@ public class ConnectionMain {
 		SessionFactory sf = HibernateUtil.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction tran = session.beginTransaction();
-		//User user = new User("appi.bh@gmail.com","Appi", "Bhimavarapu","R", "appi123", LocalDate.of(1984, Month.SEPTEMBER, 19), "585-260-5875");
+		//User user = new User("","Appi", "Bhimavarapu","R", "appi123", LocalDate.of(1984, Month.SEPTEMBER, 19), "585-260-5875");
 		//session.save(user);
 		//Course course = new Course("Java - I", "Appi",SkillLevel.BEGINNER, "Intro to java", null, new BigDecimal(0.0), "gets understanding of java", "free");
 		//course.getRegisteredUsers().add(session.get(User.class,1l));

@@ -3,6 +3,7 @@ package com.jnit.entities;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 //@Table(name="commissionEmpTable")
+@Cacheable
+@Cache(region="employee", usage=CacheConcurrencyStrategy.READ_WRITE)
+//@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;

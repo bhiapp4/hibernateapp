@@ -1,0 +1,54 @@
+ACID
+
+A for Atomic(All or none) - This property states that a transaction must be treated as an atomic unit, that is, either all of its operations are executed or none. 
+C for consistent -The database must be in consistent state after every transaction
+I for isolation(seperation) - Transactions should be able to execute in parallel
+D for durablility - The database should be durable enough to hold all its latest updates even if the system fails or restarts. lets say it a transaction is committed before the
+changes are made final in database goes down, when it comes back up, the changes should go back to the disk
+
+ISOLATION
+
+Database anomalies
+-Dirty Reads
+   - T1 ->Update Products set price =1000 where name=‘Laptop’ -> hasn’t committed yet
+  -  T2 ->select * from product where name=‘Laptop’ -> read the dirty data -> what happens if previous transaction performs a roll back ?
+
+-Non-repeatable reads
+- T1 -> Select * from Product where  name=‘Laptop’ ->  Price -800
+- T2 -> Update product set price=‘900’ where name=‘Laptop’ -> transaction committed
+- T1 -> select * from Product where name=‘Laptop’ -> gets different data
+
+-Phantom reads(a new record is inserted matching where condition)
+
+-T1 -> Select * from Employee where city=‘Coppell’
+-T2 -> Insert into Employee values(‘Harry’,’Coppell’);
+-T1 -> Reads the data again then it gets a different result
+
+Isolation levels - Helps maintain database integrity
+-Read Uncommitted - Dirty reads, Non-repeatable reads, Phantom reads
+-Read Committed - Non-repeatable reads and Phantom reads
+-Repeatable Reads - Phantom reads - We don’t get to non-repeatable reads problem here,database restricts the data read does’t change, when read second time in the same transaction we get the same data
+-Serializable - No problems but slow, because each transaction has to wait for other to finish
+
+Optimistic  Locking
+- @Version(on a new column(integers(version number of our records))),TimeStamp column
+-T1 -> 1 T2 -> 1 -> 2 -> Optmistic Locking exception, StaleObjectException
+- Transactions here are optimistic in nature
+- use a column in the table to figure out if something has changed when we push for an update
+- suited when we reads outnumber writes
+-In hibernate we employ that using a new version column or existing timestamp column used as version column
+
+Pessimistic Locking
+
+-Transactions lock your records and let other transactions wait before they make any changes
+-Suited when writes outnumber reads/or frequent updates to a table
+-Different Lock modes
+  	-Read -acquired automatically when Hibernate reads data under Repeatable Read orSerializable isolation level. It can be re-acquired by explicit user request.
+	-Write - acquires lock for insert and update operations
+	-Upgrade - acquires lock when we perform a select…for update query
+	-Upgrade_NoWait - acquires lock when we perform a select…for update query in oracle db
+    -None - All transactions will come to this state at the end of the transaction
+
+-session.lock,session.load with lock mode, query.setLockMode
+
+-We can also use both optimistic and pessimistic locking for a given transaction/table
